@@ -66,6 +66,7 @@ This codebase was built with strict adherence to "Intraday EMA RSI Strategy Test
 *   **RSI Precision**: Uses Wilder's Smoothing (`alpha=1/14`) rather than a simple moving average, ensuring values match standard trading platforms.
 *   **Look-Ahead Bias Prevention**:
     *   **Signal Wait**: Signals are confirmed only after the 10-minute candle closes.
+    *   **EMA-50 Context**: The EMA-50 trend filter becomes available only after the first 1-hour candle has completed, meaning trading begins only after sufficient trend context is established (no forward-looking bias).
     *   **Execution Loop**: Trades are executed on *subsequent* 1-minute data flows.
     *   **Short Window**: The "Low of last 5 mins" calculation explicitly excludes the current signal minute to prevent future peeking.
 *   **Gap Handling**: Logic intelligently handles gap-ups/downs. If the market opens beyond a trigger price, the `Open` price is used for the fill.
